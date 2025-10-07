@@ -1,6 +1,57 @@
  /* App JS - maneja productos, clientes, ventas y pagos (localStorage + FIFO para pagos) */
 document.addEventListener('DOMContentLoaded', () => {
+/* end DOMContentLoaded */
+// ======= Exportar respaldo =======
+const btnExportar = document.getElementById('btnExportar');
+if (btnExportar) {
+  btnExportar.addEventListener('click', () => {
+    const data = {
+      productos: Storage.getProductos(),
+      clientes: Storage.getClientes(),
+      ventas: Storage.getVentas(),
+      pagos: Storage.getPagos()
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `respaldo_tenispro_${new Date().toISOString().slice(0,10)}.json`;
+    a.click();
+  });
+}
 
+// ======= Importar respaldo =======
+const inputImportar = document.getElementById('inputImportar');
+if (inputImportar) {
+  inputImportar.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result);
+        if (data.productos && data.clientes && data.ventas && data.pagos) {
+          if (confirm('Esto reemplazará todos los datos actuales. ¿Continuar?')) {
+            Storage.setProductos(data.productos);
+            Storage.setClientes(data.clientes);
+            Storage.setVentas(data.ventas);
+            Storage.setPagos(data.pagos);
+            alert('Respaldo restaurado correctamente');
+            renderClientes();
+            renderProductos();
+            renderVentas();
+            renderPagos();
+            renderSelects();
+          }
+        } else {
+          alert('Archivo inválido.');
+        }
+      } catch (err) {
+        alert('Error al leer el archivo: ' + err.message);
+      }
+    };
+    reader.readAsText(file);
+  });
+}
 // ======= Storage util =======
 const Storage = {
 keys: { productos:'app_productos', clientes:'app_clientes', ventas:'app_ventas', pagos:'app_pagos' },
@@ -435,4 +486,4 @@ renderPagos();
 renderSelects();
 renderCart();
 
-}); /* end DOMContentLoaded */
+}); 
