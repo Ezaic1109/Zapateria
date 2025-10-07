@@ -1,0 +1,100 @@
+:root {
+--color-primario: #E85D04;
+--color-secundario: #0A1931;
+--color-texto: #ffffff;
+--color-fondo: #fafafa;
+}
+
+body {
+font-family: 'Poppins', sans-serif;
+background-color: var(--color-fondo);
+margin: 0;
+padding: 0;
+color: var(--color-secundario);
+}
+
+/* ----- NAVBAR ----- */
+header.navbar {
+background-color: var(--color-secundario);
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand span {
+font-weight: 600;
+font-size: 1.4rem;
+color: var(--color-texto);
+}
+
+.nav-link {
+color: var(--color-texto) !important;
+font-weight: 500;
+transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+color: var(--color-primario) !important;
+}
+
+/* ----- CONTENIDO PRINCIPAL ----- */
+main {
+padding-top: 60px;
+}
+
+h1 {
+color: var(--color-secundario);
+font-weight: 700;
+margin-bottom: 0.5em;
+}
+
+.lead {
+color: #555;
+}
+
+/* ----- TARJETAS ----- */
+.card {
+border: none;
+border-radius: 12px;
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+background-color: var(--color-texto);
+}
+
+.card:hover {
+transform: translateY(-5px);
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+color: var(--color-secundario);
+font-weight: 600;
+}
+
+/* ----- BOTONES ----- */
+.btn-primary {
+background-color: var(--color-primario);
+border: none;
+font-weight: 600;
+border-radius: 8px;
+}
+
+.btn-primary:hover {
+background-color: #d04a02;
+}
+
+/* ----- FOOTER ----- */
+footer {
+background-color: var(--color-secundario);
+color: var(--color-texto);
+padding: 15px 0;
+font-size: 0.9rem;
+letter-spacing: 0.3px;
+}
+
+/* ----- RESPONSIVE ----- */
+@media (max-width: 768px) {
+h1 {
+font-size: 1.6rem;
+}
+.card {
+margin-bottom: 1rem;
+}
+}

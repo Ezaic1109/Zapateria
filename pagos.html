@@ -1,0 +1,87 @@
+<!doctype html>
+
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pagos - Tenis Pro</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.png" alt="Logo" width="45" height="45" class="me-2">
+        <span>Tenis Pro</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container mt-5">
+    <section>
+      <h1>Pagos</h1>
+      <p class="lead">Registra abonos o pagos de clientes con crédito.</p>
+    </section>
+
+```
+<section class="mt-4">
+  <form id="pagoForm" class="row g-3">
+    <div class="col-md-3">
+      <label for="clientePago" class="form-label">Cliente</label>
+      <select id="clientePago" class="form-select" required></select>
+    </div>
+    <div class="col-md-3">
+      <label for="productoPago" class="form-label">Descripción</label>
+      <input type="text" id="productoPago" class="form-control" placeholder="Nota/Descripción" required>
+    </div>
+    <div class="col-md-2">
+      <label for="cantidadPago" class="form-label">Monto</label>
+      <input type="number" id="cantidadPago" class="form-control" min="0.01" step="0.01" required>
+    </div>
+    <div class="col-md-2">
+      <label for="fechaPago" class="form-label">Fecha</label>
+      <input type="date" id="fechaPago" class="form-control" required>
+    </div>
+    <div class="col-md-2">
+      <label for="formaPago" class="form-label">Forma de Pago</label>
+      <select id="formaPago" class="form-select" required>
+        <option value="Efectivo">Efectivo</option>
+        <option value="Transferencia">Transferencia</option>
+      </select>
+    </div>
+    <div class="col-12 text-end">
+      <button type="submit" class="btn btn-primary mt-3">Registrar Pago</button>
+    </div>
+  </form>
+</section>
+
+<section class="mt-5">
+  <h2>Historial de Pagos</h2>
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Descripción</th>
+        <th>Monto</th>
+        <th>Fecha</th>
+        <th>Forma</th>
+      </tr>
+    </thead>
+    <tbody id="tablaPagos"></tbody>
+  </table>
+</section>
+```
+
+  </main>
+
+  <footer class="text-center py-3 bg-dark text-light mt-5">
+    <p class="mb-0">&copy; 2025 Tenis Pro</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="js/app.js"></script>
+
+</body>
+</html>
